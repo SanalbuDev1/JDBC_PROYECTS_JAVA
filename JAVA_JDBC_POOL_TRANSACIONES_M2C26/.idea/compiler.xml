@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="JAVA_JDBC" />
+        <module name="JAVA_JDBC_POOL_M2C21" />
+        <module name="JAVA_JDBC_POOL_TRANSACIONES_M2C26" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
