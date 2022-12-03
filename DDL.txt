@@ -1,0 +1,46 @@
+CREATE SCHEMA `java_curso` ;
+
+CREATE TABLE `java_curso`.`productos` (
+  `idproductos` INT NOT NULL AUTO_INCREMENT,
+  `nombre_producto` VARCHAR(45) NULL,
+  `precio` DECIMAL(20,2) NULL,
+  `fecha_registro` DATETIME NULL,
+  PRIMARY KEY (`idproductos`));
+
+INSERT INTO `java_curso`.`productos` (`nombre_producto`, `precio`, `fecha_registro`) VALUES ('Bicicleta', '3000000', '2022/09/16');
+INSERT INTO `java_curso`.`productos` (`nombre_producto`, `precio`, `fecha_registro`) VALUES ('Samsung TV', '1500000', '2022/08/12');
+
+-- clase 18
+CREATE TABLE `java_curso`.`categorias` (
+  `idcategorias` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  PRIMARY KEY (`idcategorias`),
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE);
+
+ALTER TABLE `java_curso`.`productos` 
+ADD COLUMN `id_categoria_fk` VARCHAR(45) NULL AFTER `fecha_Registro`,
+CHANGE COLUMN `` `id_categoria_fk` VARCHAR(45) NULL ;
+
+ALTER TABLE `java_curso`.`productos` 
+ADD INDEX `key_id_categorias_fk_idx` (`id_categoria_fk` ASC) VISIBLE;
+;
+ALTER TABLE `java_curso`.`productos` 
+ADD CONSTRAINT `key_id_categorias_fk`
+  FOREIGN KEY (`id_categoria_fk`)
+  REFERENCES `java_curso`.`categorias` (`idcategorias`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+INSERT INTO `java_curso`.`categorias` (`idcategorias`, `nombre`) VALUES ('1', 'deportes');
+INSERT INTO `java_curso`.`categorias` (`idcategorias`, `nombre`) VALUES ('2', 'tecnologia');
+INSERT INTO `java_curso`.`categorias` (`idcategorias`, `nombre`) VALUES ('3', 'computacion');
+
+ALTER TABLE `java_curso`.`productos` 
+ADD COLUMN `etiquetaSku` VARCHAR(45) NULL AFTER `id_categoria_fk`,
+ADD UNIQUE INDEX `etiquetaSku_UNIQUE` (`etiquetaSku` ASC) VISIBLE;
+;
+
+
+
+
+
